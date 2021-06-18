@@ -20,34 +20,34 @@ spriteset(spriteset_tram_ktm8km_purchase, "gfx/ktm8km.png") {
 	[ 38,    23,       51,    21,     -25,       -10]
 }
 spritegroup spritegroup_tram_ktm8km {
-    loaded:  spriteset_tram_ktm8km;
-    loading: spriteset_tram_ktm8km_load;
+	loaded:  spriteset_tram_ktm8km;
+	loading: spriteset_tram_ktm8km_load;
 }
 item(FEAT_ROADVEHS, item_tram_ktm8km) {
-    property {
-        name:                           string(STR_NAME_KTM8KM);
-        climates_available:             ALL_CLIMATES;
-        introduction_date:              date(1994,08,01);
-        model_life:                     20;
-        vehicle_life:                   20;
-        reliability_decay:              20;
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
-        loading_speed:                  10;
-        cost_factor:                    61;
-        running_cost_factor:            42;
+	property {
+		name:                           string(STR_NAME_KTM8KM);
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1994,08,01);
+		model_life:                     20;
+		vehicle_life:                   20;
+		reliability_decay:              20;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		loading_speed:                  10;
+		cost_factor:                    61;
+		running_cost_factor:            42;
 		visual_effect:                  visual_effect(VISUAL_EFFECT_ELECTRIC, -4);
 		sound_effect:                   sound("bell.wav");
-        sprite_id:                      SPRITE_ID_NEW_ROADVEH;
-        speed:                          75 km/h;
-        misc_flags:                     bitmask(ROADVEH_FLAG_2CC, ROADVEH_FLAG_TRAM);
-        running_cost_base:              RUNNING_COST_ROADVEH;
-        power:                          272 hp;
-        weight:                         20 ton;
-        cargo_capacity:                 183;
-    }
-    graphics {
+		sprite_id:                      SPRITE_ID_NEW_ROADVEH;
+		speed:                          75 km/h;
+		misc_flags:                     bitmask(ROADVEH_FLAG_2CC, ROADVEH_FLAG_TRAM);
+		running_cost_base:              RUNNING_COST_ROADVEH;
+		power:                          272 hp;
+		weight:                         20 ton;
+		cargo_capacity:                 183;
+	}
+	graphics {
 		additional_text:                return string(STR_DESC_KTM8KM);
 		purchase:                       spriteset_tram_ktm8km_purchase;
-        default:                        spritegroup_tram_ktm8km;
-    }
+		default:                        spritegroup_tram_ktm8km;
+	}
 }
