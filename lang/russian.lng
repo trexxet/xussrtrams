@@ -1,0 +1,23 @@
+##grflangid 0x07
+# This is the Russian language file
+
+STR_GRF_NAME        :{TITLE} {VERSION}
+STR_GRF_DESCRIPTION :Набор русских, советских и постсоветских трамваев{}{COPYRIGHT}2021 trexxet
+
+# KTM-5M3
+STR_NAME_KTM5M3     :КТМ-5М3 (71-605)
+STR_DESC_KTM5M3     :Производитель: {GOLD}УКВЗ{BLACK}{}Выпускался: {GOLD}1972-1992{BLACK}{}Может быть переоборудован в {GOLD}двухвагонный{BLACK} состав
+STR_CARGO_KTM5M3_1  : (1 вагон)
+STR_CARGO_KTM5M3_2  : (2 вагона)
+
+# 2 KTM-5M3
+STR_NAME_2KTM5M3    :2 КТМ-5М3 (71-605)
+STR_DESC_2KTM5M3    :Производитель: {GOLD}УКВЗ{BLACK}{}Выпускался: {GOLD}1972-1992{BLACK}{}Состав КТМ-5М3 по СМЕ
+
+# KTM-8K
+STR_NAME_KTM8K      :КТМ-8К (71-608К)
+STR_DESC_KTM8K      :Производитель: {GOLD}УКВЗ{BLACK}{}Выпускался: {GOLD}1990-1994{BLACK}
+
+# KTM-8KМ
+STR_NAME_KTM8KM     :КТМ-8КМ (71-608КМ)
+STR_DESC_KTM8KM     :Производитель: {GOLD}УКВЗ{BLACK}{}Выпускался: {GOLD}1994-2007{BLACK}

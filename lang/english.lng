@@ -1,0 +1,23 @@
+##grflangid 0x01
+# This is the English language file
+
+STR_GRF_NAME        :{TITLE} {VERSION}
+STR_GRF_DESCRIPTION :Set of Russian, Soviet and post-Soviet trams{}{COPYRIGHT}2021 trexxet
+
+# KTM-5M3
+STR_NAME_KTM5M3     :KTM-5M3 (71-605)
+STR_DESC_KTM5M3     :Manufacturer: {GOLD}UKVZ{BLACK}{}Constructed: {GOLD}1972-1992{BLACK}{}Can be refit to {GOLD}two tramcar{BLACK} EMU
+STR_CARGO_KTM5M3_1  : (1 tramcar)
+STR_CARGO_KTM5M3_2  : (2 tramcars)
+
+# 2 KTM-5M3
+STR_NAME_2KTM5M3    :2 KTM-5M3 (71-605)
+STR_DESC_2KTM5M3    :Manufacturer: {GOLD}UKVZ{BLACK}{}Constructed: {GOLD}1972-1992{BLACK}{}Multiple unit KTM-5M3
+
+# KTM-8K
+STR_NAME_KTM8K      :KTM-8K (71-608K)
+STR_DESC_KTM8K      :Manufacturer: {GOLD}UKVZ{BLACK}{}Constructed: {GOLD}1990-1994{BLACK}
+
+# KTM-8KM
+STR_NAME_KTM8KM     :KTM-8KM  (71-608KM)
+STR_DESC_KTM8KM     :Manufacturer: {GOLD}UKVZ{BLACK}{}Constructed: {GOLD}1994-2007{BLACK}

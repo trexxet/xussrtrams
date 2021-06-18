@@ -1,0 +1,91 @@
+// KTM-5M3
+template tmp_ktm5m3() {
+	//left_x, upper_y, width, height, offset_x, offset_y
+	[ 0,      0,        6,    45,      -3,       -22]
+	[ 7,      0,       29,    34,     -20,       -20]
+	[ 37,     0,       50,    22,     -25,       -16]
+	[ 88,     0,       29,    34,     -11,       -20]
+	[ 118,    0,        6,    45,      -3,       -22]
+	[ 125,    0,       29,    34,     -20,       -20]
+	[ 155,    0,       50,    22,     -25,       -11]
+	[ 206,    0,       29,    34,     -10,       -21]
+}
+spriteset(spriteset_tram_ktm5m3, "trams/ktm5m3/ktm5m3.png") {
+	tmp_ktm5m3()
+}
+spriteset(spriteset_tram_ktm5m3_load, "trams/ktm5m3/ktm5m3_load.png") {
+	tmp_ktm5m3()
+}
+spriteset(spriteset_tram_ktm5m3_purchase, "trams/ktm5m3/ktm5m3.png") {
+	[ 37,    23,       50,    22,     -25,       -11]
+}
+spritegroup spritegroup_tram_ktm5m3 {
+    loaded:  spriteset_tram_ktm5m3;
+    loading: spriteset_tram_ktm5m3_load;
+}
+
+switch (FEAT_ROADVEHS, SELF, sw_articulated_ktm5m3, extra_callback_info1) {
+	1..2: return item_tram_ktm5m3;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_ROADVEHS, SELF, sw_cargo_subtype_text_ktm5m3, cargo_subtype) {
+	0: return string(STR_CARGO_KTM5M3_1);
+	1: return string(STR_CARGO_KTM5M3_2);
+	return CB_RESULT_NO_TEXT;
+}
+switch (FEAT_ROADVEHS, SELF, sw_spriteset_rear_ktm5m3, cargo_subtype) {
+	0: return spriteset_invisible;
+	1: return spritegroup_tram_ktm5m3;
+}
+switch (FEAT_ROADVEHS, SELF, sw_spriteset_ktm5m3, position_in_consist) {
+	0: return spritegroup_tram_ktm5m3;
+	1: return spriteset_invisible;
+	2: sw_spriteset_rear_ktm5m3;
+}
+switch (FEAT_ROADVEHS, SELF, sw_refit_cost_ktm5m3, getbits(extra_callback_info1, 8, 8)) {
+	0: return (cargo_subtype == 0) ? 0 : -50 & CB_RESULT_REFIT_COST_MASK;
+	1: return (cargo_subtype == 1) ? 0 :  75 & CB_RESULT_REFIT_COST_MASK;
+}
+switch (FEAT_ROADVEHS, SELF, sw_length_ktm5m3, cargo_subtype) {
+	0: return (position_in_consist == 0) ? 8 : 1;
+	1: return (position_in_consist != 1) ? 8 : 5;
+}
+switch (FEAT_ROADVEHS, SELF, sw_capacity_ktm5m3, cargo_subtype) {
+	0: return (position_in_consist == 0) ? 224 : 0;
+	1: return (position_in_consist != 1) ? 224 : 0;
+}
+
+item(FEAT_ROADVEHS, item_tram_ktm5m3) {
+    property {
+        name:                           string(STR_NAME_KTM5M3);
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1972,12,01);
+        model_life:                     20;
+        vehicle_life:                   20;
+        reliability_decay:              20;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        loading_speed:                  8;
+        cost_factor:                    58;
+        running_cost_factor:            40;
+		visual_effect:                  visual_effect(VISUAL_EFFECT_ELECTRIC, -4);
+		sound_effect:                   sound("bell.wav");
+        sprite_id:                      SPRITE_ID_NEW_ROADVEH;
+        speed:                          75 km/h;
+		cargo_capacity:                 224/3;
+        misc_flags:                     bitmask(ROADVEH_FLAG_2CC, ROADVEH_FLAG_TRAM);
+        running_cost_base:              RUNNING_COST_ROADVEH;
+    }
+    graphics {
+		additional_text:                return string(STR_DESC_KTM5M3);
+		articulated_part:               sw_articulated_ktm5m3;
+		cargo_subtype_text:             sw_cargo_subtype_text_ktm5m3;
+		refit_cost:                     sw_refit_cost_ktm5m3;
+		length:                         sw_length_ktm5m3;
+		weight:                         return (cargo_subtype == 0) ? 19*4 : 19*8;
+		power:                          return (cargo_subtype == 0) ? 24 : 24*2;
+		cargo_capacity:                 sw_capacity_ktm5m3;
+		purchase_cargo_capacity:        224/3;
+		purchase:                       spriteset_tram_ktm5m3_purchase;
+        default:                        sw_spriteset_ktm5m3;
+    }
+}
